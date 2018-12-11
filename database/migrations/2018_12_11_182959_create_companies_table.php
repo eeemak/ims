@@ -17,6 +17,12 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('short_name')->nullable();
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('telephone')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('website')->nullable();
+            $table->string('address')->nullable();
             $table->text('description')->nullable();
             $table->integer('creator_user_id')->unsigned();
             $table->foreign('creator_user_id')->references('id')->on('users')->onDelete('cascade');
