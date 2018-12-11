@@ -29,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('short_name')->nullable();  
             $table->string('code', 50)->unique();
             $table->string('sku', 50)->unique();
-            $table->text('description');
+            $table->text('description')->nullable();  
             $table->string('uom', 10);
             $table->double('alert_quantity', 8, 2);
             $table->double('selling_price', 15, 2);
