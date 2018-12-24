@@ -12,7 +12,7 @@ $factory->define(App\Model\ProductBrand::class, function (Faker $faker) {
         'description' => $faker->paragraph,
        'creator_user_id'=>function(){
             return User::all()->random();
-        }
+        },
          'company_id'=>function(){
             return Company::all()->random();
         }

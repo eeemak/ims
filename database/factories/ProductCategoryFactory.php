@@ -12,8 +12,8 @@ $factory->define(App\Model\ProductCategory::class, function (Faker $faker) {
         'parent_id' => null,
         'creator_user_id'=>function(){
             return User::all()->random();
-        }
-         'company_id'=>function(){
+        },
+        'company_id'=>function(){
             return Company::all()->random();
         }
     ];

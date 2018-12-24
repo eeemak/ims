@@ -12,12 +12,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        $this->call(UnitOfMeasurementsTableSeeder::class);
+       
 
         //factory
         factory(App\Model\User::class,10)->create();
         factory(App\Model\Company::class,10)->create();
         factory(App\Model\ProductBrand::class,50)->create();
         factory(App\Model\ProductCategory::class,50)->create();
+        //Seeder
+        $this->call(UnitOfMeasurementsTableSeeder::class);
     }
 }
