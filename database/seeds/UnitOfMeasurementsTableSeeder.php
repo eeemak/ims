@@ -13,12 +13,11 @@ class UnitOfMeasurementsTableSeeder extends Seeder
     public function run()
     {
     	$item = new UnitOfMeasurement;
-    	$item->name = 'name';
-    	$item->short_name = 'name';
-    	$item->short_name = 'name';
-    	$item->description = 'name';
-    	$item->company_id = 'name';
-    	$item->creator_user_id = 'name';
+    	$item->name = 'KiloGram';
+    	$item->short_name = 'KG';
+    	$item->description = 'Description';
+    	$item->company_id = 1;
+    	$item->creator_user_id = 1;
     	$item->save();
     }
 }
