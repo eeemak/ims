@@ -6,7 +6,7 @@ use App\Model\User;
 $factory->define(App\Model\Company::class, function (Faker $faker) {
     return [
         'name'=>$faker->word,
-        'short_name'=>$faker->company,
+        'short_name'=>$faker->word,
         'email'=>$faker->email,
         'phone'=>$faker->phoneNumber,
         'telephone'=>$faker->phoneNumber,
