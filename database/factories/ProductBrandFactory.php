@@ -10,12 +10,8 @@ $factory->define(App\Model\ProductBrand::class, function (Faker $faker) {
         'name' => $faker->name,
         'short_name' => $faker->name,
         'description' => $faker->paragraph,
-       'creator_user_id'=>function(){
-            return User::all()->random();
-        },
-         'company_id'=>function(){
-            return Company::all()->random();
-        }
+        'creator_user_id'=>User::all()->random()->id,
+        'company_id'=>Company::all()->random()->id,
 
     ];
 });
