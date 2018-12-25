@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePurchasesTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreatePurchasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('invoice_number', 20);
-            $table->date('date');
-            $table->double('net_amount', 15, 2);
-            $table->double('grand_amount', 15, 2);
-            $table->text('remark')->nullable();
-            $table->Integer('supplier_id')->unsigned();
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
-            $table->Integer('company_branch_id')->unsigned()->nullable();
-            $table->foreign('company_branch_id')->references('id')->on('company_branches')->onDelete('cascade');
+            $table->string('name');
+            $table->string('short_name');
+            $table->string('mobile')->nullable();
+            $table->string('address',100)->nullable();
+            $table->string('email',100)->nullable();
+            $table->string('website',100)->nullable();
             $table->Integer('company_id')->unsigned()->nullable();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->integer('creator_user_id')->unsigned()->nullable();
@@ -42,6 +39,6 @@ class CreatePurchasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('customers');
     }
 }
