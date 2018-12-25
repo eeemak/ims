@@ -15,14 +15,12 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('invoice_number', 20);
-           
             $table->double('net_amount', 15, 2);
             $table->double('discount', 8, 2);
             $table->double('extra_discount', 8, 2);
             $table->double('vat', 8, 2);
             $table->double('grand_amount', 15, 2);
-             $table->date('date');
+            $table->date('date');
             $table->text('remark')->nullable();
             $table->Integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');

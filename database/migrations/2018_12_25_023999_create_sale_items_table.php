@@ -14,7 +14,7 @@ class CreateSaleItemsTable extends Migration
     public function up()
     {
         Schema::create('sale_items', function (Blueprint $table) {
-             $table->increments('id');
+            $table->increments('id');
             $table->Integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->double('unit_price', 15, 2);
