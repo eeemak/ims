@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\ProductGroup;
+use App\Http\Resources\ProductGroupResource;
 use Illuminate\Http\Request;
 
 class ProductGroupController extends Controller
@@ -14,7 +15,7 @@ class ProductGroupController extends Controller
      */
     public function index()
     {
-        //
+        return ProductGroupResource::collection(ProductGroup::paginate(5));
     }
 
     /**
@@ -35,7 +36,8 @@ class ProductGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $productGroup = ProductGroup::create($request->all());
+        return new ProductGroupResource($productGroup);
     }
 
     /**
@@ -46,7 +48,7 @@ class ProductGroupController extends Controller
      */
     public function show(ProductGroup $productGroup)
     {
-        //
+        return new ProductGroupResource($productGroup);
     }
 
     /**
@@ -69,7 +71,8 @@ class ProductGroupController extends Controller
      */
     public function update(Request $request, ProductGroup $productGroup)
     {
-        //
+        $productGroup->update($request->all());
+        return new ProductGroupResource($productGroup);
     }
 
     /**
@@ -80,6 +83,7 @@ class ProductGroupController extends Controller
      */
     public function destroy(ProductGroup $productGroup)
     {
-        //
+        $productGroup->delete();
+        return new ProductGroupResource($productGroup);
     }
 }

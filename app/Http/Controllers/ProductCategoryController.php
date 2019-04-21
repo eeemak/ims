@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\ProductCategory;
+use App\Http\Resources\ProductCategoryResource;
 use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
@@ -14,7 +15,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return ProductCategoryResource::collection(ProductCategory::paginate(5));
     }
 
     /**
@@ -35,7 +36,8 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $productCategory = ProductCategory::create($request->all());
+        return new ProductCategoryResource($productCategory);
     }
 
     /**
@@ -46,7 +48,7 @@ class ProductCategoryController extends Controller
      */
     public function show(ProductCategory $productCategory)
     {
-        //
+        return new ProductCategoryResource($productCategory);
     }
 
     /**
@@ -69,7 +71,8 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, ProductCategory $productCategory)
     {
-        //
+        $productCategory->update($request->all());
+        return new ProductCategoryResource($productCategory);
     }
 
     /**
@@ -80,6 +83,7 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $productCategory)
     {
-        //
+        $productCategory->delete();
+        return new ProductCategoryResource($productCategory);
     }
 }
