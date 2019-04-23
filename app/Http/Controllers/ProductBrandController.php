@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\ProductBrand;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProductBrandResource;
 
 class ProductBrandController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductBrandController extends Controller
      */
     public function index()
     {
-        //
+        return ProductBrandResource::collection(ProductBrand::paginate(5));
     }
 
     /**
@@ -35,7 +36,8 @@ class ProductBrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $productBrand = ProductBrand::create($request->all());
+        return new ProductBrandResource($productBrand);
     }
 
     /**
@@ -46,7 +48,7 @@ class ProductBrandController extends Controller
      */
     public function show(ProductBrand $productBrand)
     {
-        //
+        return new ProductBrandResource($productBrand);
     }
 
     /**
@@ -69,7 +71,8 @@ class ProductBrandController extends Controller
      */
     public function update(Request $request, ProductBrand $productBrand)
     {
-        //
+        $productBrand->update($request->all());
+        return new ProductBrandResource($productBrand);
     }
 
     /**
@@ -80,6 +83,7 @@ class ProductBrandController extends Controller
      */
     public function destroy(ProductBrand $productBrand)
     {
-        //
+        $productBrand->delete();
+        return new ProductBrandResource($productBrand);
     }
 }
