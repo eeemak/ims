@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('products', 'ProductController');
 Route::apiResource('product-categories', 'ProductCategoryController');
 Route::apiResource('product-groups', 'ProductGroupController');
+Route::apiResource('product-brands', 'ProductBrandController');
